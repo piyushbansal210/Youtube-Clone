@@ -37,3 +37,9 @@ export type Video={
   views:number;
 
 }
+
+
+export type VideoPlayer={
+  videoURI:string;
+  thumbnailRUI:string;
+}

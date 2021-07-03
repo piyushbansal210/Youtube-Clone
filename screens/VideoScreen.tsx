@@ -8,6 +8,8 @@ import VideoListItem from '../components/VideoListItem'
 import videos from '../assets/data/videos.json';
 import { Fontisto } from '@expo/vector-icons';
 
+import VideoPlayer from '../components/VideoPlayer'
+
 
 
 const VideoScreen =()=>{
@@ -28,7 +30,7 @@ const VideoScreen =()=>{
         <View>
 
             {/* Video Player */}
-            <Image style={styles.videoPlayer} source={{uri :video.thumbnail}}/>
+            <VideoPlayer videoURI={video.videoUrl} thumbnailURI={video.thumbnail}/>
 
             {/* Video Info */}
             <View style={styles.videoInfoContainer}>   
