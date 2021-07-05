@@ -38,8 +38,12 @@ export type Video={
 
 }
 
-
-export type VideoPlayer={
-  videoURI:string;
-  thumbnailRUI:string;
+export type VideoCommentType={
+  id:string;
+  createdAt:string;
+  comment:string;
+  likes:number;
+  dislikes:number;
+  replies:number;
+  user:User;
 }
