@@ -30,7 +30,7 @@ const VideoListItem=(props:VideoListItemProps)=>{
 
     const onPress=()=>{
         console.log('hi')
-        navigation.navigate('VideoScreen')
+        navigation.navigate('VideoScreen',{id:video.id})
     }
 
     const navigation=useNavigation();
