@@ -2,16 +2,22 @@
  * Learn more about createBottomTabNavigator:
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-
+import {View,Image} from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { Entypo , MaterialIcons  } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
+import { AntDesign } from '@expo/vector-icons';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+
+const logo=require('../assets/images/logo.png')
+
 import HomeScreen from '../screens/HomeScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
 
@@ -83,12 +89,33 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
+
+  
+
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="TabOneScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle:()=>null, 
+        headerLeft:()=>{
+          return(
+            <View style={{marginHorizontal:-25}}>
+              <Image source={logo} style={{width:200,height:25,resizeMode:'contain'}}/>
+            </View>
+          )
+        },
+        headerRight:()=>{
+          return(
+            <View style={{flexDirection:'row',width:150,marginHorizontal:20,justifyContent:'space-between'}}>
+              <Feather name="cast" size={24} color="white" />
+              <AntDesign name="bells" size={24} color="white" />
+              <AntDesign name="search1" size={24} color="white" />
+              <FontAwesome name="user-circle" size={24} color="white" />
+            </View>
+          )
+        }
+      }}
       />
     </TabOneStack.Navigator>
   );
