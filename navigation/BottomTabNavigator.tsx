@@ -7,7 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
+import { Entypo , MaterialIcons  } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -22,20 +22,50 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="Home"
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].background ,
+      labelStyle:{
+        fontSize:12,
+        marginBottom:3
+      },
+      style:{
+        height:55
+      }}}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="home" size={30} color="white" />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Explore"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="explore" size={30} color="white" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Add"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <Ionicons name="add-circle-outline" size={48} color="white" />,
+          tabBarLabel:()=>null,
+          
+        }}
+      />
+      <BottomTab.Screen
+        name="Subscription"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="subscriptions" size={30} color="white" />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Library"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={30} color="white" />,
         }}
       />
     </BottomTab.Navigator>

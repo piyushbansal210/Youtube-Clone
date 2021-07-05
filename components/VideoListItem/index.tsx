@@ -4,6 +4,9 @@ import { View,Text,Image } from 'react-native';
 import styles from './style';
 import { Entypo } from '@expo/vector-icons';
 import {Video} from '../../types';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+
+import { useNavigation } from '@react-navigation/native'; 
  
 export type VideoListItemProps={
     video :Video;
@@ -24,10 +27,18 @@ const VideoListItem=(props:VideoListItemProps)=>{
     }else if(video.views>1000){
         viewsString=(video.views/1000).toFixed(1)+'K'
     }
+
+    const onPress=()=>{
+        console.log('hi')
+        navigation.navigate('VideoScreen')
+    }
+
+    const navigation=useNavigation();
+
     
 
     return(
-        <View style={styles.container}>
+        <TouchableWithoutFeedback style={styles.container} onPress={onPress}>
             <View style={styles.videoCard}>
                 <View>
                     <Image style={styles.thumbnail} source={{uri: video.thumbnail}}/>
@@ -46,7 +57,7 @@ const VideoListItem=(props:VideoListItemProps)=>{
                 </View>
 
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     )
 }
 

@@ -17,8 +17,8 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <VideoScreen/>
-        {/*<Navigation colorScheme={'dark'} />*/}
+
+        <Navigation colorScheme={'dark'} />
         <StatusBar />
       </SafeAreaProvider>
     );
